@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class Answer extends StatelessWidget {
-  final VoidCallback answerQuestion;
-  final String answerText;
+  final Function answerQuestion;
+  final Map<String, Object> answerObj;
 
   const Answer(
     this.answerQuestion,
-    this.answerText,
+    this.answerObj,
   );
 
   @override
@@ -17,8 +17,8 @@ class Answer extends StatelessWidget {
         style: ButtonStyle(
           backgroundColor: MaterialStatePropertyAll(Colors.brown),
         ),
-        onPressed: answerQuestion,
-        child: Text(answerText),
+        onPressed: () => answerQuestion(answerObj['score']),
+        child: Text(answerObj['text'] as String),
       ),
     );
   }
